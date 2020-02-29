@@ -112,9 +112,12 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
     }
 
     const name = repoChannelName(
-        !!ctx.configuration?.parameters?.prefix ? `${!!ctx.configuration?.parameters?.prefix}-${repo.name}` : repo.name);
+        !!ctx.configuration?.parameters?.prefix ?
+            `${!!ctx.configuration?.parameters?.prefix}-${repo.name}` : repo.name);
 
-    const channels = await ctx.graphql.query<ChannelByNameResponse>(ChannelByNameQuery, { name });
+    const channels = await ctx.graphql.query<ChannelByNameResponse>(
+        ChannelByNameQuery,
+        { name });
 
     let channelId;
     if (channels.ChatChannel?.length > 0) {
@@ -122,7 +125,9 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
         channelId = channels.ChatChannel[0].team.id;
     } else {
         // Create if not
-        const channel = await ctx.graphql.mutate<CreateChannelResponse>(CreateChannelMutation, { teamId, name });
+        const channel = await ctx.graphql.mutate<CreateChannelResponse>(
+            CreateChannelMutation,
+            { teamId, name });
         channelId = channel?.createSlackChannel?.id;
     }
 
@@ -141,9 +146,12 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
 
         // Invite committers
         if (ctx.configuration?.parameters?.invite) {
-            const userIds = _.uniq(push.commits.filter(c => !!c.author?.person?.chatId?.id).map(c => c.author?.person?.chatId?.id));
+            const userIds = _.uniq(push.commits.filter(
+                c => !!c.author?.person?.chatId?.id).map(c => c.author?.person?.chatId?.id));
             for (const userId of userIds) {
-                await ctx.graphql.mutate(InviteUserToChannelMutation, { teamId, channelId, userId });
+                await ctx.graphql.mutate(
+                    InviteUserToChannelMutation,
+                    { teamId, channelId, userId });
             }
         }
     }
