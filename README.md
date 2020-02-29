@@ -1,6 +1,10 @@
 # `atomist/channel-repo-mapper-skill`
 
+<!---atomist-skill-readme:start--->
+
 Automatically scan committed code for well-known credentials and secrets.
+
+<!---atomist-skill-readme:end--->
 
 ---
 
