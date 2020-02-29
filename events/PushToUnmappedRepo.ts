@@ -36,6 +36,13 @@ interface CreateChannelResponse {
     };
 }
 
+const AddBotToChannelMutation = `mutation addBotToSlackChannel($teamId: String!, $channelId: String!) {
+  addBotToSlackChannel(chatTeamId: $teamId, channelId: $channelId) {
+    id
+  }
+}
+`;
+
 const LinkChannelToRepoMutation = `mutation linkSlackChannelToRepo(
   $teamId: String!
   $channelId: String!
@@ -101,6 +108,8 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
         CreateChannelMutation,
         { teamId, name });
     const channelId = channel?.createSlackChannel?.id;
+
+    await ctx.graphql.mutate(AddBotToChannelMutation, { teamId, channelId });
 
     if (!!channelId) {
         // Link repo to channel

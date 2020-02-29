@@ -4,7 +4,7 @@ subscription PushToUnmappedRepo {
             author {
                 person {
                     chatId {
-                        id
+                        userId
                     }
                 }
             }
