@@ -1,0 +1,59 @@
+#
+#  Copyright © 2020 Atomist, Inc.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+
+skill:
+  name: atomist/channel-repo-mapper-skill
+  title: Channel Repository Mapper
+  version: 0.1.0
+  author: Atomist
+  description: |-
+    Automatically map repositories to chat channels and invite committers
+  documentation: |-
+    Automatically map repositories to chat channels and invite committers
+  category:
+    - productivity
+  license: Apache-2.0
+  homepage: https://github.com/atomist-skills/channel-repo-mapper-skill
+  repository: https://github.com/atomist-skills/channel-repo-mapper-skill.git
+  icon: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSIxNjAiIHZpZXdCb3g9IjAgMCA4IDE2Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04IDR2MUgwVjRoOHpNMCA4aDhWN0gwdjF6bTAgM2g4di0xSDB2MXoiLz48L3N2Zz4=
+
+  package:
+    - use: atomist/package-sdm-skill/package
+      parameters:
+        main: node_modules/@atomist/skill/lib/function.js
+        dependencies: keep
+
+  runtime:
+    memory: 512
+    name: nodejs10
+    entry_point: entryPoint
+
+parameters:
+  - boolean:
+      name: invite
+      display_name: Invite Committers
+      description: Invite committers to mapped channel
+      required: true
+  - string:
+      name: prefix
+      display_name: Channel Prefix
+      description: Prefix for newly created chat channels
+      required: false
+  - repo_filter:
+      name: repos
+      display_name: Repositories
+      description: ''
+      required: false
