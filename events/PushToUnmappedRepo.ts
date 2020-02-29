@@ -112,7 +112,7 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
                 channelName: name,
                 repo: repo.name,
                 owner: repo.owner,
-                providerId: repo.org.provider.id,
+                providerId: repo.org.provider.providerId,
             });
 
         // Invite committers
