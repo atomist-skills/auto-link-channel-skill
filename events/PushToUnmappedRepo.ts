@@ -72,6 +72,9 @@ const InviteUserToChannelMutation = `mutation inviteUserToSlackChannel(
 }
 `;
 
+/**
+ * Event handler to automatically create and map chat channels to repositories
+ */
 export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappedRepoConfiguration> = async ctx => {
     const push = ctx.data.Push[0];
     const repo = push.repo;
