@@ -23,27 +23,6 @@ export interface PushToUnmappedRepoConfiguration {
     invite: boolean;
 }
 
-const ChannelByNameQuery = `query channelByName($name: String!) {
-  ChatChannel(name: $name) {
-    name
-    id
-    team {
-      id
-    }
-  }
-}
-`;
-
-interface ChannelByNameResponse {
-    ChatChannel: Array<{
-        id: string;
-        name: string;
-        team: {
-            id: string;
-        }
-    }>;
-}
-
 const CreateChannelMutation = `mutation createSlackChannel($teamId: String!, $name: String!) {
   createSlackChannel(chatTeamId: $teamId, name: $name) {
     id
@@ -115,21 +94,10 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
         !!ctx.configuration?.parameters?.prefix ?
             `${!!ctx.configuration?.parameters?.prefix}-${repo.name}` : repo.name);
 
-    const channels = await ctx.graphql.query<ChannelByNameResponse>(
-        ChannelByNameQuery,
-        { name });
-
-    let channelId;
-    if (channels.ChatChannel?.length > 0) {
-        // Check if channel exists already
-        channelId = channels.ChatChannel[0].team.id;
-    } else {
-        // Create if not
-        const channel = await ctx.graphql.mutate<CreateChannelResponse>(
-            CreateChannelMutation,
-            { teamId, name });
-        channelId = channel?.createSlackChannel?.id;
-    }
+    const channel = await ctx.graphql.mutate<CreateChannelResponse>(
+        CreateChannelMutation,
+        { teamId, name });
+    const channelId = channel?.createSlackChannel?.id;
 
     if (!!channelId) {
         // Link repo to channel

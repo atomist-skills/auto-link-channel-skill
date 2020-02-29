@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@atomist/skill": "0.1.0-master.20200228125049",
+    "@atomist/skill": "0.1.0-master.20200229203939",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
