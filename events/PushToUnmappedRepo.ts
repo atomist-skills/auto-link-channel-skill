@@ -127,7 +127,7 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
         // Invite committers
         if (ctx.configuration?.parameters?.invite) {
             const userIds = _.uniq(push.commits.filter(
-                c => !!c.author?.person?.chatId?.id).map(c => c.author?.person?.chatId?.id));
+                c => !!c.author?.person?.chatId?.userId).map(c => c.author?.person?.chatId?.userId));
             for (const userId of userIds) {
                 await ctx.graphql.mutate(
                     InviteUserToChannelMutation,
