@@ -1,10 +1,12 @@
 subscription PushToUnmappedRepo {
     Push {
         commits {
-            author {
+            committer {
+                login
                 person {
                     chatId {
                         userId
+                        screenName
                     }
                 }
             }
@@ -21,7 +23,7 @@ subscription PushToUnmappedRepo {
                 }
             }
             channels {
-                name
+                channelId
             }
         }
     }

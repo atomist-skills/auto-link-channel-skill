@@ -21,6 +21,7 @@ import { PushToUnmappedRepoSubscription } from "./types";
 export interface PushToUnmappedRepoConfiguration {
     prefix?: string;
     invite: boolean;
+    ignore?: string[];
 }
 
 const CreateChannelMutation = `mutation createSlackChannel($teamId: String!, $name: String!) {
@@ -86,13 +87,7 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
     const push = ctx.data.Push[0];
     const repo = push.repo;
 
-    if (push.repo?.channels?.length > 0) {
-        return {
-            code: 0,
-            reason: `Repository ${repo.owner}/${repo.name} already mapped`,
-        };
-    }
-    const teamId = push.repo.org?.chatTeam?.id;
+    const teamId = repo?.org?.chatTeam?.id;
     if (!teamId) {
         return {
             code: 0,
@@ -100,34 +95,47 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
         };
     }
 
-    const name = repoChannelName(
-        !!ctx.configuration?.parameters?.prefix ?
-            `${!!ctx.configuration?.parameters?.prefix}-${repo.name}` : repo.name);
+    const channelIds = [];
+    if (repo.channels?.length === 0) {
+        const name = repoChannelName(
+            !!ctx.configuration?.parameters?.prefix ?
+                `${!!ctx.configuration?.parameters?.prefix}-${repo.name}` : repo.name);
 
-    const channel = await ctx.graphql.mutate<CreateChannelResponse>(
-        CreateChannelMutation,
-        { teamId, name });
-    const channelId = channel?.createSlackChannel?.id;
-
-    await ctx.graphql.mutate(AddBotToChannelMutation, { teamId, channelId });
-
-    if (!!channelId) {
+        const channel = await ctx.graphql.mutate<CreateChannelResponse>(
+            CreateChannelMutation,
+            { teamId, name });
+        channelIds.push(channel?.createSlackChannel?.id);
+        await ctx.graphql.mutate(AddBotToChannelMutation, { teamId, channelId: channelIds[0] });
         // Link repo to channel
         await ctx.graphql.mutate(
             LinkChannelToRepoMutation,
             {
                 teamId,
-                channelId,
+                channelId: channelIds[0],
                 channelName: name,
                 repo: repo.name,
                 owner: repo.owner,
                 providerId: repo.org.provider.providerId,
             });
+    } else {
+        channelIds.push(...repo.channels.map(c => c.channelId));
+    }
 
+    for (const channelId of channelIds) {
         // Invite committers
         if (ctx.configuration?.parameters?.invite) {
-            const userIds = _.uniq(push.commits.filter(
-                c => !!c.author?.person?.chatId?.userId).map(c => c.author?.person?.chatId?.userId));
+            const ignore = ctx.configuration?.parameters?.ignore || [];
+            const commits = push.commits.filter(c => {
+                if (!!c.committer?.login && ignore.includes(c.committer.login)) {
+                    return false;
+                }
+                if (!!c.committer?.person?.chatId?.screenName && ignore.includes(c.committer.person.chatId.screenName)) {
+                    return false;
+                }
+                return true;
+            });
+            const userIds = _.uniq(commits.filter(
+                c => !!c.committer?.person?.chatId?.userId).map(c => c.committer?.person?.chatId?.userId));
             for (const userId of userIds) {
                 await ctx.graphql.mutate(
                     InviteUserToChannelMutation,
