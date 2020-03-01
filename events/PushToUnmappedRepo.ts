@@ -145,7 +145,7 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
     }
     return {
         code: 0,
-        reason: `Linked repository ${repo.owner}/${repo.name} to channel ${name}`,
+        reason: `Linked repository [${repo.owner}/${repo.name}](${repo.url}) to channel and invited committers`,
     };
 };
 

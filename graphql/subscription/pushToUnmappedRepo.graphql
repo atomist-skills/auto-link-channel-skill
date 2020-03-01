@@ -12,6 +12,7 @@ subscription PushToUnmappedRepo {
             }
         }
         repo {
+            url
             owner
             name
             org {
