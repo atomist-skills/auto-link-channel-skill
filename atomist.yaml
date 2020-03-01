@@ -50,7 +50,7 @@ parameters:
   - string_array:
       name: ignore
       display_name: Ignore Committers
-      descriptions: Don't invite committers that are listed here (can be Chat user name or GitHub login)
+      description: Don't invite committers that are listed here (can be Chat user name or GitHub login)
       required: false
   - string:
       name: prefix
