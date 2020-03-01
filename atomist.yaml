@@ -45,17 +45,17 @@ parameters:
   - boolean:
       name: invite
       display_name: Invite Committers
-      description: Invite committers to mapped channel
+      description: Invite committers to mapped channels
       required: true
   - string_array:
       name: ignore
       display_name: Ignore Committers
-      description: Don't invite committers that are listed here (can be Chat user name or GitHub login)
+      description: List committers who should not get invited to mapped channels (can be chat user name or GitHub login)
       required: false
   - string:
       name: prefix
       display_name: Channel Prefix
-      description: Prefix for newly created chat channels
+      description: Prefix for newly created mapped channels
       required: false
   - repo_filter:
       name: repos
