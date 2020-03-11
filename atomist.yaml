@@ -28,7 +28,7 @@ skill:
   license: Apache-2.0
   homepage: https://github.com/atomist-skills/channel-repo-mapper-skill
   repository: https://github.com/atomist-skills/channel-repo-mapper-skill.git
-  icon: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSIxNjAiIHZpZXdCb3g9IjAgMCA4IDE2Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04IDR2MUgwVjRoOHpNMCA4aDhWN0gwdjF6bTAgM2g4di0xSDB2MXoiLz48L3N2Zz4=
+  icon: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGRhdGEtbmFtZT0iTGF5ZXIgMSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiwxNC42N2EyLDIsMCwxLDAsNCwwdi0ySDRBMiwyLDAsMCwwLDIsMTQuNjdabTEyLjY0LTMuMzRhMiwyLDAsMCwwLDItMlY0YTIsMiwwLDEsMC00LDBWOS4zM0EyLDIsMCwwLDAsMTQuNjYsMTEuMzNabTcuMzItMmEyLDIsMCwxLDAtNCwwdjJoMkEyLDIsMCwwLDAsMjIsOS4zM1pNOS4zNCwxMi42N2EyLDIsMCwwLDAtMiwyVjIwYTIsMiwwLDEsMCw0LDBWMTQuNjdBMiwyLDAsMCwwLDkuMzQsMTIuNjdaTTE0LjY2LDE4aC0ydjJhMiwyLDAsMSwwLDItMlpNMjAsMTIuNjdIMTQuNjZhMiwyLDAsMCwwLDAsNEgyMGEyLDIsMCwwLDAsMC00Wk05LjM0LDcuMzNINGEyLDIsMCwxLDAsMCw0SDkuMzRhMiwyLDAsMCwwLDAtNFpNOS4zNCwyYTIsMiwwLDAsMCwwLDRoMlY0QTIsMiwwLDAsMCw5LjM0LDJaIi8+PC9zdmc+
 
   package:
     - use: atomist/package-sdm-skill/package
@@ -50,7 +50,7 @@ parameters:
   - string_array:
       name: ignore
       display_name: Ignore Committers
-      description: List committers who should not get invited to mapped channels (can be chat user name or GitHub login)
+      description: List committers who should not get invited to mapped channels (can be chat user names or GitHub logins)
       required: false
   - string:
       name: prefix
