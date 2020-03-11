@@ -2,7 +2,7 @@
 
 <!---atomist-skill-readme:start--->
 
-Automatically scan committed code for well-known credentials and secrets.
+Automatically map repositories to chat channels and invite committers.
 
 <!---atomist-skill-readme:end--->
 
