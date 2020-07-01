@@ -1,4 +1,12 @@
-# `atomist/channel-repo-mapper-skill`
+# `atomist/auto-link-channel-skill`
+
+<!---atomist-skill-description:start--->
+
+Link chat channels to GitHub repositories
+
+<!---atomist-skill-description:end--->
+
+---
 
 <!---atomist-skill-readme:start--->
 
