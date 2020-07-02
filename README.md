@@ -17,8 +17,7 @@ Automatically map repositories to chat channels and invite committers.
 ---
 
 Created by [Atomist][atomist].
-Need Help?  [Join our Slack workspace][slack].
+Need Help? [Join our Slack workspace][slack].
 
-[atomist]: https://atomist.com/ (Atomist - How Teams Deliver Software)
-[slack]: https://join.atomist.com/ (Atomist Community Slack) 
- 
+[atomist]: https://atomist.com/ "Atomist - How Teams Deliver Software"
+[slack]: https://join.atomist.com/ "Atomist Community Slack"

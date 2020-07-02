@@ -1,31 +1,31 @@
 subscription PushToUnmappedRepo {
-    Push {
-        commits {
-            committer {
-                login
-                person {
-                    chatId {
-                        userId
-                        screenName
-                    }
-                }
-            }
+  Push {
+    commits {
+      committer {
+        login
+        person {
+          chatId {
+            userId
+            screenName
+          }
         }
-        repo {
-            url
-            owner
-            name
-            org {
-                provider {
-                    providerId
-                }
-                chatTeam {
-                    id
-                }
-            }
-            channels {
-                channelId
-            }
-        }
+      }
     }
+    repo {
+      url
+      owner
+      name
+      org {
+        provider {
+          providerId
+        }
+        chatTeam {
+          id
+        }
+      }
+      channels {
+        channelId
+      }
+    }
+  }
 }
