@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/atomist-skills/auto-link-channel-skill/compare/0.1.0...HEAD)
 
+### Added
+
+-   Intial version. [9296b1e](https://github.com/atomist-skills/auto-link-channel-skill/commit/9296b1ef9c262b9cfb8cceb21349dca823cbace8)
+
 ## [0.1.0](https://github.com/atomist-skills/auto-link-channel-skill/tree/0.1.0) - 2020-07-02
 
 ### Changed
