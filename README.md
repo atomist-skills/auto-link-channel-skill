@@ -20,7 +20,7 @@ When channels are linked to repositories, you get actionable notifications from
 the [GitHub Notifications](https://go.atomist.com/catalog/skills/atomist/github-notifications-skill)
 skill.
 
--   Safes you time by setting up ChatOps for GitHub activity in your behalf
+-   Safes you time by setting up ChatOps for your team's GitHub activity
 -   Increase visibility into what's happening in your repositories across your
     organization
 
