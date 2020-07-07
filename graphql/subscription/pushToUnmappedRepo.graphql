@@ -25,6 +25,7 @@ subscription PushToUnmappedRepo {
       }
       channels {
         channelId
+        name
       }
     }
   }

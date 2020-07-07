@@ -44,7 +44,7 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
         };
     }
 
-    const channelIds = [];
+    const channelIds: Array<{ id: string; name: string }> = [];
     if (repo.channels?.length === 0) {
         const name = repoChannelName(
             ctx.configuration?.[0]?.parameters?.prefix
@@ -56,25 +56,28 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
             "createChannel.graphql",
             { teamId, name },
         );
-        channelIds.push(channel?.createSlackChannel?.id);
+        await ctx.audit.log(`Created or updated channel '${name}'`);
+        channelIds.push({ id: channel?.createSlackChannel?.id, name });
         await ctx.graphql.mutate<AddBotToChannelMutation, AddBotToChannelMutationVariables>("addBotToChannel.graphql", {
             teamId,
-            channelId: channelIds[0],
+            channelId: channelIds[0].id,
         });
+        await ctx.audit.log(`Invite @atomist bot to channel '${name}'`);
         // Link repo to channel
         await ctx.graphql.mutate<LinkChannelToRepoMutation, LinkChannelToRepoMutationVariables>(
             "linkChannelToRepo.graphql",
             {
                 teamId,
-                channelId: channelIds[0],
+                channelId: channelIds[0].id,
                 channelName: name,
                 repo: repo.name,
                 owner: repo.owner,
                 providerId: repo.org.provider.providerId,
             },
         );
+        await ctx.audit.log(`Linked repository '${repo.owner}/${repo.name}' to channel '${name}'`);
     } else {
-        channelIds.push(...repo.channels.map(c => c.channelId));
+        channelIds.push(...repo.channels.map(c => ({ id: c.channelId, name: c.name })));
     }
 
     for (const channelId of channelIds) {
@@ -87,22 +90,23 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
                 }
                 if (
                     !!c.committer?.person?.chatId?.screenName &&
-                    ignore.includes(c.committer.person.chatId.screenName)
+                    ignore.includes(c.committer?.person?.chatId?.screenName)
                 ) {
                     return false;
                 }
                 return true;
             });
-            const userIds = _.uniq(
+            const userIds: Array<{ id: string; name: string }> = _.uniq(
                 commits
                     .filter(c => !!c.committer?.person?.chatId?.userId)
-                    .map(c => c.committer?.person?.chatId?.userId),
+                    .map(c => ({ id: c.committer?.person?.chatId?.userId, name: c.committer?.login })),
             );
             for (const userId of userIds) {
                 await ctx.graphql.mutate<InviteUserToChannelMutation, InviteUserToChannelMutationVariables>(
                     "inviteUserToChannel.graphql",
-                    { teamId, channelId, userId },
+                    { teamId, channelId: channelId.id, userId: userId.id },
                 );
+                await ctx.audit.log(`Invited user '${userId.name}' to channel '${channelId.name}'`);
             }
         }
     }
