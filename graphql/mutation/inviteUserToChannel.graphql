@@ -1,13 +1,13 @@
 mutation inviteUserToChannel(
-    $teamId: String!
-    $channelId: String!
-    $userId: String!
+  $teamId: String!
+  $channelId: String!
+  $userId: String!
 ) {
-    inviteUserToSlackChannel(
-        chatTeamId: $teamId
-        channelId: $channelId
-        userId: $userId
-    ) {
-        id
-    }
+  inviteUserToSlackChannel(
+    chatTeamId: $teamId
+    channelId: $channelId
+    userId: $userId
+  ) {
+    id
+  }
 }

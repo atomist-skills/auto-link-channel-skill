@@ -12,15 +12,15 @@ Link chat channels to GitHub repositories
 
 # What it's useful for
 
-Enable ChatOps for all of your GitHub repository activity. This skill will 
+Enable ChatOps for all of your GitHub repository activity. This skill will
 streamline the process of creating channels, linking them to repositories and
 inviting repository contributors to the channels.
 
 When channels are linked to repositories, you get actionable notifications from
 the [GitHub Notifications](https://go.atomist.com/catalog/skills/atomist/github-notifications-skill)
-skill.    
+skill.
 
--   Safes you time by setting up ChatOps for GitHub activity in your behalf 
+-   Safes you time by setting up ChatOps for GitHub activity in your behalf
 -   Increase visibility into what's happening in your repositories across your
     organization
 
@@ -36,13 +36,13 @@ least one repository must be selected. The **Slack** or **Microsoft Teams**
 integration are required to successfully link channels.
 
 We recommend installing the [GitHub Notifications](https://go.atomist.com/catalog/skills/atomist/github-notifications-skill)
-skill in order to receive notifications for your GitHub activity.    
+skill in order to receive notifications for your GitHub activity.
 
 # How to configure
 
 1. **Always invite committers**
 
-    With this setting you can control if you want the skill to always invite 
+    With this setting you can control if you want the skill to always invite
     chat users to linked channels when they push to repositories.
 
 1. **Allow committers to opt out**
@@ -54,10 +54,10 @@ skill in order to receive notifications for your GitHub activity.
 1. **Prefix channel names**
 
     Use this setting to prefix the names of newly created channels for better
-    grouping. 
-    
+    grouping.
+
     By default, this skill creates channels named after the repository. Manually
-    renamed or linked channels will not get renamed.  
+    renamed or linked channels will not get renamed.
 
 1. **Determine repository scope**
 
