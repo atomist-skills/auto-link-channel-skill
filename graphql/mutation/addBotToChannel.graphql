@@ -1,0 +1,5 @@
+mutation addBotToChannel($teamId: String!, $channelId: String!) {
+    addBotToSlackChannel(chatTeamId: $teamId, channelId: $channelId) {
+        id
+    }
+}

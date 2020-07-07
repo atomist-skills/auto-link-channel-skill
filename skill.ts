@@ -49,7 +49,7 @@ export const Skill = skill<PushToUnmappedRepoConfiguration & { repos: any }>({
             type: ParameterType.StringArray,
             displayName: "Ignore committers",
             description:
-                "List committers who should not get invited to mapped channels (can be chat user names or GitHub logins)",
+                "List committers who should not get invited to linked channels (can be chat user names or GitHub logins)",
             required: false,
         },
         prefix: {

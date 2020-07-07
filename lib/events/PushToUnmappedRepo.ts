@@ -17,63 +17,17 @@
 import { EventHandler } from "@atomist/skill";
 import * as _ from "lodash";
 import { PushToUnmappedRepoConfiguration } from "../configuration";
-import { PushToUnmappedRepoSubscription } from "../typings/types";
-
-const CreateChannelMutation = `mutation createSlackChannel($teamId: String!, $name: String!) {
-  createSlackChannel(chatTeamId: $teamId, name: $name) {
-    id
-  }
-}
-`;
-
-interface CreateChannelResponse {
-    createSlackChannel: {
-        id: string;
-    };
-}
-
-const AddBotToChannelMutation = `mutation addBotToSlackChannel($teamId: String!, $channelId: String!) {
-  addBotToSlackChannel(chatTeamId: $teamId, channelId: $channelId) {
-    id
-  }
-}
-`;
-
-const LinkChannelToRepoMutation = `mutation linkSlackChannelToRepo(
-  $teamId: String!
-  $channelId: String!
-  $channelName: String!
-  $repo: String!
-  $owner: String!
-  $providerId: String
-) {
-  linkSlackChannelToRepo(
-    chatTeamId: $teamId
-    channelId: $channelId
-    channelName: $channelName
-    repo: $repo
-    owner: $owner
-    providerId: $providerId
-  ) {
-    id
-  }
-}
-`;
-
-const InviteUserToChannelMutation = `mutation inviteUserToSlackChannel(
-  $teamId: String!
-  $channelId: String!
-  $userId: String!
-) {
-  inviteUserToSlackChannel(
-    chatTeamId: $teamId
-    channelId: $channelId
-    userId: $userId
-  ) {
-    id
-  }
-}
-`;
+import {
+    AddBotToChannelMutation,
+    AddBotToChannelMutationVariables,
+    CreateChannelMutation,
+    CreateChannelMutationVariables,
+    InviteUserToChannelMutation,
+    InviteUserToChannelMutationVariables,
+    LinkChannelToRepoMutation,
+    LinkChannelToRepoMutationVariables,
+    PushToUnmappedRepoSubscription,
+} from "../typings/types";
 
 /**
  * Event handler to automatically create and map chat channels to repositories
@@ -98,18 +52,27 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
                 : repo.name,
         );
 
-        const channel = await ctx.graphql.mutate<CreateChannelResponse>(CreateChannelMutation, { teamId, name });
+        const channel = await ctx.graphql.mutate<CreateChannelMutation, CreateChannelMutationVariables>(
+            "createChannel.graphql",
+            { teamId, name },
+        );
         channelIds.push(channel?.createSlackChannel?.id);
-        await ctx.graphql.mutate(AddBotToChannelMutation, { teamId, channelId: channelIds[0] });
-        // Link repo to channel
-        await ctx.graphql.mutate(LinkChannelToRepoMutation, {
+        await ctx.graphql.mutate<AddBotToChannelMutation, AddBotToChannelMutationVariables>("addBotToChannel.graphql", {
             teamId,
             channelId: channelIds[0],
-            channelName: name,
-            repo: repo.name,
-            owner: repo.owner,
-            providerId: repo.org.provider.providerId,
         });
+        // Link repo to channel
+        await ctx.graphql.mutate<LinkChannelToRepoMutation, LinkChannelToRepoMutationVariables>(
+            "linkChannelToRepo.graphql",
+            {
+                teamId,
+                channelId: channelIds[0],
+                channelName: name,
+                repo: repo.name,
+                owner: repo.owner,
+                providerId: repo.org.provider.providerId,
+            },
+        );
     } else {
         channelIds.push(...repo.channels.map(c => c.channelId));
     }
@@ -136,7 +99,10 @@ export const handler: EventHandler<PushToUnmappedRepoSubscription, PushToUnmappe
                     .map(c => c.committer?.person?.chatId?.userId),
             );
             for (const userId of userIds) {
-                await ctx.graphql.mutate(InviteUserToChannelMutation, { teamId, channelId, userId });
+                await ctx.graphql.mutate<InviteUserToChannelMutation, InviteUserToChannelMutationVariables>(
+                    "inviteUserToChannel.graphql",
+                    { teamId, channelId, userId },
+                );
             }
         }
     }
