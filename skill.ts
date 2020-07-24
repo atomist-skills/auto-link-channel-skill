@@ -22,7 +22,7 @@ export const Skill = skill<PushToUnmappedRepoConfiguration & { repos: any }>({
     namespace: "atomist",
     displayName: "Auto-Link Chat Channels",
     author: "Atomist",
-    categories: [Category.Notifications],
+    categories: [Category.Chat],
     license: "Apache-2.0",
     homepageUrl: "https://github.com/atomist-skills/auto-link-channel-skill",
     repositoryUrl: "https://github.com/atomist-skills/auto-link-channel-skill.git",
