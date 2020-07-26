@@ -61,7 +61,8 @@
     "skill:bundle": "atm-skill bundle --minify --source-map",
     "skill:package": "atm-skill package",
     "skill:register": "atm-skill register",
-    "atm:lint:eslint": "eslint --fix"
+    "atm:lint:eslint": "eslint --fix",
+    "atm:lint:prettier": "prettier --write"
   },
   "husky": {
     "hooks": {
@@ -69,6 +70,7 @@
     }
   },
   "lint-staged": {
-    "**/*.ts": "npm run atm:lint:eslint"
+    "**/*.ts": "npm run atm:lint:eslint",
+    "**/*.@(graphql|json|markdown|yaml|yml|md)": "npm run atm:lint:prettier"
   }
 }
