@@ -15,7 +15,7 @@
  */
 
 export interface PushToUnmappedRepoConfiguration {
-    prefix?: string;
-    invite: boolean;
-    ignore?: string[];
+	prefix?: string;
+	invite: boolean;
+	ignore?: string[];
 }
