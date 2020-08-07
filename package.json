@@ -1,11 +1,11 @@
 {
   "main": "node_modules/@atomist/skill/lib/function.js",
   "dependencies": {
-    "@atomist/skill": "^0.1.1-25",
+    "@atomist/skill": "^0.1.1-29",
     "lodash": "^4.17.19"
   },
   "devDependencies": {
-    "@google-cloud/functions-framework": "^1.6.0",
+    "@google-cloud/functions-framework": "^1.7.0",
     "@graphql-codegen/cli": "^1.17.7",
     "@graphql-codegen/typescript": "^1.17.7",
     "@graphql-codegen/typescript-operations": "^1.17.7",
