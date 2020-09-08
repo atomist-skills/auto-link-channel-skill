@@ -30,10 +30,6 @@ export const Skill = skill<PushToUnmappedRepoConfiguration & { repos: any }>({
 	author: "Atomist",
 	categories: [Category.Chat],
 	license: "Apache-2.0",
-	homepageUrl: "https://github.com/atomist-skills/auto-link-channel-skill",
-	repositoryUrl:
-		"https://github.com/atomist-skills/auto-link-channel-skill.git",
-	iconUrl: "file://docs/images/icon.svg",
 
 	runtime: {
 		memory: 512,
@@ -67,6 +63,4 @@ export const Skill = skill<PushToUnmappedRepoConfiguration & { repos: any }>({
 		},
 		repos: parameter.repoFilter({ required: false }),
 	},
-
-	subscriptions: ["file://graphql/subscription/*.graphql"],
 });
