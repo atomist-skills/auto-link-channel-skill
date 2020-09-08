@@ -33,7 +33,7 @@ export const Skill = skill<PushToUnmappedRepoConfiguration & { repos: any }>({
 
 	runtime: {
 		memory: 512,
-		timeout: 90,
+		timeout: 60,
 	},
 
 	resourceProviders: {
