@@ -17,7 +17,8 @@ streamline the process of creating channels, linking them to repositories and
 inviting repository contributors to the channels.
 
 When channels are linked to repositories, you get actionable notifications from
-the [GitHub Notifications](https://go.atomist.com/catalog/skills/atomist/github-notifications-skill)
+the
+[GitHub Notifications](https://go.atomist.com/catalog/skills/atomist/github-notifications-skill)
 skill.
 
 -   Saves you time by setting up ChatOps for your team's GitHub activity
@@ -35,7 +36,8 @@ The **GitHub** integration must be configured in order to use this skill. At
 least one repository must be selected. The **Slack** or **Microsoft Teams**
 integration are required to successfully link channels.
 
-We recommend installing the [GitHub Notifications](https://go.atomist.com/catalog/skills/atomist/github-notifications-skill)
+We recommend installing the
+[GitHub Notifications](https://go.atomist.com/catalog/skills/atomist/github-notifications-skill)
 skill in order to receive notifications for your GitHub activity.
 
 # How to configure
@@ -73,17 +75,19 @@ skill in order to receive notifications for your GitHub activity.
 
 1. **Commit and push changes to your GitHub repositories**
 
-1. **See how the skill creates channels and invites colleagues who work on the same repositories!**
+1. **See how the skill creates channels and invites colleagues who work on the
+   same repositories!**
 
-To create feature requests or bug reports, create an [issue in the repository for this skill](https://github.com/atomist-skills/npm-license-usage-skill/issues).
-See the [code](https://github.com/atomist-skills/npm-license-usage-skill) for the skill.
+To create feature requests or bug reports, create an
+[issue in the repository for this skill](https://github.com/atomist-skills/npm-license-usage-skill/issues).
+See the [code](https://github.com/atomist-skills/npm-license-usage-skill) for
+the skill.
 
 <!---atomist-skill-readme:end--->
 
 ---
 
-Created by [Atomist][atomist].
-Need Help? [Join our Slack workspace][slack].
+Created by [Atomist][atomist]. Need Help? [Join our Slack workspace][slack].
 
 [atomist]: https://atomist.com/ "Atomist - How Teams Deliver Software"
 [slack]: https://join.atomist.com/ "Atomist Community Slack"
