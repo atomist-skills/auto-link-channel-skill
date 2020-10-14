@@ -50,8 +50,8 @@ export const handler: EventHandler<
 	const channelIds: Array<{ id: string; name: string }> = [];
 	if (repo.channels?.length === 0) {
 		const name = repoChannelName(
-			ctx.configuration?.[0]?.parameters?.prefix
-				? `${!!ctx.configuration?.[0]?.parameters?.prefix}-${repo.name}`
+			ctx.configuration?.parameters?.prefix
+				? `${!!ctx.configuration?.parameters?.prefix}-${repo.name}`
 				: repo.name,
 		);
 
@@ -92,8 +92,8 @@ export const handler: EventHandler<
 
 	for (const channelId of channelIds) {
 		// Invite committers
-		if (ctx.configuration?.[0]?.parameters?.invite) {
-			const ignore = ctx.configuration?.[0]?.parameters?.ignore || [];
+		if (ctx.configuration?.parameters?.invite) {
+			const ignore = ctx.configuration?.parameters?.ignore || [];
 			const commits = push.commits.filter(c => {
 				if (
 					!!c.committer?.login &&
