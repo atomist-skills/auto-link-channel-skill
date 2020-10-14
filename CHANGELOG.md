@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/atomist-skills/auto-link-channel-skill/compare/0.1.4...HEAD)
 
+### Changed
+
+-   Remove single dispatch. [7d4daf6](https://github.com/atomist-skills/auto-link-channel-skill/commit/7d4daf6781ae316fc38c25e492a4db2709a1462c)
+
 ## [0.1.4](https://github.com/atomist-skills/auto-link-channel-skill/compare/0.1.3...0.1.4) - 2020-10-09
 
 ## [0.1.3](https://github.com/atomist-skills/auto-link-channel-skill/compare/0.1.2...0.1.3) - 2020-08-27
