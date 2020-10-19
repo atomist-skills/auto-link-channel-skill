@@ -61,14 +61,19 @@ export const handler: EventHandler<
 		>("createChannel.graphql", { teamId, name });
 		await ctx.audit.log(`Created or updated channel '${name}'`);
 		channelIds.push({ id: channel?.createSlackChannel?.id, name });
-		await ctx.graphql.mutate<
-			AddBotToChannelMutation,
-			AddBotToChannelMutationVariables
-		>("addBotToChannel.graphql", {
-			teamId,
-			channelId: channelIds[0].id,
-		});
-		await ctx.audit.log(`Invite @atomist bot to channel '${name}'`);
+
+		// For slack we need to invite the bot; this can be skipped for MSTeams
+		if (push?.repo?.org?.chatTeam?.provider === "slack") {
+			await ctx.graphql.mutate<
+				AddBotToChannelMutation,
+				AddBotToChannelMutationVariables
+			>("addBotToChannel.graphql", {
+				teamId,
+				channelId: channelIds[0].id,
+			});
+			await ctx.audit.log(`Invite @atomist bot to channel '${name}'`);
+		}
+
 		// Link repo to channel
 		await ctx.graphql.mutate<
 			LinkChannelToRepoMutation,
