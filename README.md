@@ -1,93 +1,81 @@
 # `atomist/auto-link-channel-skill`
 
-<!---atomist-skill-description:start--->
+Link chat channels to GitHub repositories.
 
-Link chat channels to GitHub repositories
+:sparkles: [_**View this skill in the Atomist Skills Catalog**_][atomist-skill]
+to enable this skill on your repositories. :sparkles:
 
-<!---atomist-skill-description:end--->
+See the [Atomist website][atomist] for general information about Atomist Skills
+and the [Atomist documentation site][atomist-doc] for instructions on how to get
+started using Atomist Skills.
 
----
+[atomist-skill]:
+    https://go.atomist.com/catalog/skills/atomist/auto-link-channel-skill
+    "Atomist Skills Catalog - Automate All Your Software Tasks"
+[atomist-doc]: https://docs.atomist.com/ "Atomist Documentation"
 
-<!---atomist-skill-readme:start--->
+## Contributing
 
-# What it's useful for
+Contributions to this project from community members are encouraged and
+appreciated. Please review the [Contributing Guidelines](CONTRIBUTING.md) for
+more information. Also see the [Development](#development) section in this
+document.
 
-Enable ChatOps for all of your GitHub repository activity. This skill will
-streamline the process of creating channels, linking them to repositories and
-inviting repository contributors to the channels.
+## Code of conduct
 
-When channels are linked to repositories, you get actionable notifications from
-the
-[GitHub Notifications](https://go.atomist.com/catalog/skills/atomist/github-notifications-skill)
-skill.
+This project is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). You are
+expected to act in accordance with this code by participating. Please report any
+unacceptable behavior to code-of-conduct@atomist.com.
 
--   Saves you time by setting up ChatOps for your team's GitHub activity
--   Increase visibility into what's happening in your repositories across your
-    organization
+## Connect
 
-# Before you get started
+Follow [@atomist][atomist-twitter] on Twitter and [The Atomist
+Blog][atomist-blog].
 
-Connect and configure this integration:
+[atomist-twitter]: https://twitter.com/atomist "Atomist on Twitter"
+[atomist-blog]: https://blog.atomist.com/ "The Atomist Blog"
 
-1. **GitHub**
-1. **Slack or Microsoft Teams**
+## Support
 
-The **GitHub** integration must be configured in order to use this skill. At
-least one repository must be selected. The **Slack** or **Microsoft Teams**
-integration are required to successfully link channels.
+General support questions should be discussed in the `#support` channel in the
+[Atomist community Slack workspace][slack].
 
-We recommend installing the
-[GitHub Notifications](https://go.atomist.com/catalog/skills/atomist/github-notifications-skill)
-skill in order to receive notifications for your GitHub activity.
+If you find a problem, please create an [issue](../../issues).
 
-# How to configure
+## Development
 
-1. **Always invite committers**
+You will need to install [Node.js][node] to build and test this project.
 
-    With this setting you can control if you want the skill to always invite
-    chat users to linked channels when they push to repositories.
+[node]: https://nodejs.org/ "Node.js"
 
-1. **Allow committers to opt out**
+### Build and test
 
-    Some committers might not want to get invited to channels when they commit
-    and push to repositories. GitHub logins or chat user names of such uers can
-    be added here to prevent invitations to go out.
+Install dependencies.
 
-1. **Prefix channel names**
+```
+$ npm ci
+```
 
-    Use this setting to prefix the names of newly created channels for better
-    grouping.
+Use the `build` package script to compile, test, lint, and build the
+documentation.
 
-    By default, this skill creates channels named after the repository. Manually
-    renamed or linked channels will not get renamed.
+```
+$ npm run build
+```
 
-1. **Determine repository scope**
+### Release
 
-    By default, this skill will be enabled for all repositories in all
-    organizations you have connected.
+Releases are created by pushing a release [semantic version][semver] tag to the
+repository, Atomist Skills take care of the rest.
 
-    To restrict the organizations or specific repositories on which the skill
-    will run, you can explicitly choose organization(s) and repositories.
+To make this skill globally available, set its maturity to "stable" via the set
+maturity drop-down in its Atomist Community Slack channel.
 
-# How to manage linked channels and invite users
-
-1. **Set up the skill**
-
-1. **Commit and push changes to your GitHub repositories**
-
-1. **See how the skill creates channels and invites colleagues who work on the
-   same repositories!**
-
-To create feature requests or bug reports, create an
-[issue in the repository for this skill](https://github.com/atomist-skills/npm-license-usage-skill/issues).
-See the [code](https://github.com/atomist-skills/npm-license-usage-skill) for
-the skill.
-
-<!---atomist-skill-readme:end--->
+[semver]: https://semver.org/ "Semantic Version"
 
 ---
 
 Created by [Atomist][atomist]. Need Help? [Join our Slack workspace][slack].
 
-[atomist]: https://atomist.com/ "Atomist - How Teams Deliver Software"
+[atomist]: https://atomist.com/ "Atomist - Automate All the Software Things"
 [slack]: https://join.atomist.com/ "Atomist Community Slack"
