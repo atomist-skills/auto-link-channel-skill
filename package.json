@@ -50,7 +50,7 @@
     "typedoc": "npm run doc"
   },
   "dependencies": {
-    "@atomist/skill": "^0.6.3-main.28",
+    "@atomist/skill": "^0.6.3-main.31",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
