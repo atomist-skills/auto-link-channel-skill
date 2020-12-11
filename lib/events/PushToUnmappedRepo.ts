@@ -16,6 +16,7 @@
 
 import { EventHandler } from "@atomist/skill";
 import * as _ from "lodash";
+
 import { PushToUnmappedRepoConfiguration } from "../configuration";
 import {
 	AddBotToChannelMutation,
