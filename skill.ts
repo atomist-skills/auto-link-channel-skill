@@ -21,6 +21,7 @@ import {
 	resourceProvider,
 	skill,
 } from "@atomist/skill";
+
 import { PushToUnmappedRepoConfiguration } from "./lib/configuration";
 
 export const Skill = skill<PushToUnmappedRepoConfiguration & { repos: any }>({
