@@ -10,7 +10,7 @@ This page details all runtime dependencies of `@atomist/auto-link-channel-skill`
 
 | License                         | Count |
 | ------------------------------- | ----- |
-| [0BSD](#0bsd)                   | 1     |
+| [0BSD](#0bsd)                   | 2     |
 | [AFLv2.1](#aflv21)              | 1     |
 | [Apache-2.0](#apache-20)        | 46    |
 | [BSD-2-Clause](#bsd-2-clause)   | 10    |
@@ -21,7 +21,7 @@ This page details all runtime dependencies of `@atomist/auto-link-channel-skill`
 | [GPL-3.0](#gpl-30)              | 1     |
 | [ISC](#isc)                     | 45    |
 | [MIT AND Zlib](#mit-and-zlib)   | 1     |
-| [MIT](#mit)                     | 596   |
+| [MIT](#mit)                     | 597   |
 | [Public Domain](#public-domain) | 1     |
 | [Unlicense](#unlicense)         | 1     |
 
@@ -32,6 +32,7 @@ BSD Zero Clause License - [http://landley.net/toybox/license.html](http://landle
 | Name    | Version | Publisher       | Repository                                                               |
 | ------- | ------- | --------------- | ------------------------------------------------------------------------ |
 | `tslib` | `2.0.3` | Microsoft Corp. | [https://github.com/Microsoft/tslib](https://github.com/Microsoft/tslib) |
+| `tslib` | `2.1.0` | Microsoft Corp. | [https://github.com/Microsoft/tslib](https://github.com/Microsoft/tslib) |
 
 #### AFLv2.1
 
@@ -304,7 +305,7 @@ MIT License - [https://opensource.org/licenses/MIT](https://opensource.org/licen
 | `@graphql-tools/batch-execute`                       | `7.0.0`         |                                | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
 | `@graphql-tools/code-file-loader`                    | `6.2.6`         | Dotan Simha                    | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
 | `@graphql-tools/delegate`                            | `7.0.8`         |                                | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
-| `@graphql-tools/git-loader`                          | `6.2.5`         | Dotan Simha                    | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
+| `@graphql-tools/git-loader`                          | `6.2.6`         | Dotan Simha                    | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
 | `@graphql-tools/github-loader`                       | `6.2.5`         | Dotan Simha                    | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
 | `@graphql-tools/graphql-file-loader`                 | `6.2.6`         | Dotan Simha                    | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
 | `@graphql-tools/graphql-tag-pluck`                   | `6.3.0`         |                                | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
@@ -320,6 +321,7 @@ MIT License - [https://opensource.org/licenses/MIT](https://opensource.org/licen
 | `@graphql-tools/utils`                               | `6.2.4`         | Dotan Simha                    | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
 | `@graphql-tools/utils`                               | `7.1.0`         | Dotan Simha                    | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
 | `@graphql-tools/utils`                               | `7.2.0`         | Dotan Simha                    | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
+| `@graphql-tools/utils`                               | `7.5.0`         | Dotan Simha                    | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
 | `@graphql-tools/wrap`                                | `7.0.4`         |                                | [https://github.com/ardatan/graphql-tools](https://github.com/ardatan/graphql-tools)                                                                                                                 |
 | `@nodelib/fs.scandir`                                | `2.1.3`         |                                | [https://github.com/nodelib/nodelib/tree/master/packages/fs/fs.scandir](https://github.com/nodelib/nodelib/tree/master/packages/fs/fs.scandir)                                                       |
 | `@nodelib/fs.stat`                                   | `2.0.3`         |                                | [https://github.com/nodelib/nodelib/tree/master/packages/fs/fs.stat](https://github.com/nodelib/nodelib/tree/master/packages/fs/fs.stat)                                                             |
