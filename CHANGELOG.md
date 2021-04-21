@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/atomist-skills/auto-link-channel-skill/compare/1.0.2...HEAD)
 
+### Removed
+
+-   Disable bundling. [9c1c1bb](https://github.com/atomist-skills/auto-link-channel-skill/commit/9c1c1bb8fb18c16b6190676e3f3aad6c1ebec7d0)
+
 ## [1.0.2](https://github.com/atomist-skills/auto-link-channel-skill/compare/1.0.1...1.0.2) - 2021-04-21
 
 ### Changed
