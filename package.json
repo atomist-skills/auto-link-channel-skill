@@ -50,14 +50,11 @@
     "typedoc": "npm run doc"
   },
   "dependencies": {
-    "@atomist/skill": "^0.9.1",
+    "@atomist/skill": "^0.10.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@google-cloud/functions-framework": "^1.7.1",
-    "@graphql-codegen/cli": "^1.21.4",
-    "@graphql-codegen/typescript": "^1.22.0",
-    "@graphql-codegen/typescript-operations": "^1.17.16",
     "@types/lodash": "^4.14.168",
     "@types/mocha": "^8.2.2",
     "@types/power-assert": "^1.5.3",

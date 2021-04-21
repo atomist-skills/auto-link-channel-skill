@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { EventHandler } from "@atomist/skill";
+import { EventHandler, log } from "@atomist/skill";
 import * as _ from "lodash";
 
 import { PushToUnmappedRepoConfiguration } from "../configuration";
@@ -60,7 +60,7 @@ export const handler: EventHandler<
 			CreateChannelMutation,
 			CreateChannelMutationVariables
 		>("createChannel.graphql", { teamId, name });
-		await ctx.audit.log(`Created or updated channel '${name}'`);
+		log.info(`Created or updated channel '${name}'`);
 		channelIds.push({ id: channel?.createSlackChannel?.id, name });
 
 		// For slack we need to invite the bot; this can be skipped for MSTeams
@@ -72,7 +72,7 @@ export const handler: EventHandler<
 				teamId,
 				channelId: channelIds[0].id,
 			});
-			await ctx.audit.log(`Invite @atomist bot to channel '${name}'`);
+			log.info(`Invite @atomist bot to channel '${name}'`);
 		}
 
 		// Link repo to channel
@@ -87,7 +87,7 @@ export const handler: EventHandler<
 			owner: repo.owner,
 			providerId: repo.org.provider.providerId,
 		});
-		await ctx.audit.log(
+		log.info(
 			`Linked repository '${repo.owner}/${repo.name}' to channel '${name}'`,
 		);
 	} else {
@@ -132,7 +132,7 @@ export const handler: EventHandler<
 					channelId: channelId.id,
 					userId: userId.id,
 				});
-				await ctx.audit.log(
+				log.info(
 					`Invited user '${userId.name}' to channel '${channelId.name}'`,
 				);
 			}
