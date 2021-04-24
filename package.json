@@ -50,7 +50,7 @@
     "typedoc": "npm run doc"
   },
   "dependencies": {
-    "@atomist/skill": "^0.10.1-main.30",
+    "@atomist/skill": "^0.10.1-main.31",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
@@ -61,7 +61,7 @@
     "@types/power-assert": "^1.5.3",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
-    "eslint": "^7.24.0",
+    "eslint": "^7.25.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-deprecation": "^1.2.0",
     "eslint-plugin-prettier": "^3.4.0",
